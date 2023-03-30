@@ -14,10 +14,26 @@ export default function Home() {
     settaskListdata([newTask, ...taskListdata]);
   };
 
+  const handleDelete = (deleteTodo) => {
+    const updateTodo = taskListdata.filter(task => task !== deleteTodo);
+    settaskListdata(updateTodo);
+  };
+  // const handleDelete = (deleteTodo) => {
+    // settaskListdata()
+  // };
+
   return (
-    <div style={{ marginTop: "20px" }}>
+    <div
+      style={{
+        marginTop: "20px",
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems:'center'
+      }}
+    >
       <InputTodo addNewTask={addNewTask} />
-      <TodoList data={taskListdata} />
+      <TodoList data={taskListdata} handleDelete={handleDelete} />
     </div>
   );
 }
