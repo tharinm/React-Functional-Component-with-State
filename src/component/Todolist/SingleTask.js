@@ -1,26 +1,27 @@
 import React, { useState } from "react";
 
-
-export default function SingleTask({
-  title,
-  handleDelete,
-  isEditing,
-  handleEdit,
-  handleEditEnd,
-}) {
+export default function SingleTask({ title, handleDelete, handleUpdate}) {
+  const [editMode, setEditMode] = useState(false);
   const [newTask, setNewTask] = useState("");
 
   const handleInputChange = (e) => {
     setNewTask(e.target.value);
   };
 
+  // console.log(newTask);
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      handleEdit(newTask);
-      handleEditEnd()
+      setEditMode(false);
+       handleUpdate(newTask)
+      
     }
   };
 
+  const handleEdit = () => {
+    setEditMode(true);
+  };
+
+  //console.log(newTask)
   return (
     <div
       style={{
@@ -34,16 +35,25 @@ export default function SingleTask({
       }}
     >
       <div style={{ width: "400px" }}>
-        {isEditing ? (
+        {!editMode && <p>{title}</p>}
+        {editMode && (
           <input
             type="text"
             plasehoder={title}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
           />
-        ) : (
-          <p>{title}</p>
         )}
+        {/* {editMode ? ( */}
+        {/* <input */}
+        {/* // type="text" */}
+        {/* // plasehoder={title} */}
+        {/* // onChange={handleInputChange} */}
+        {/* // onKeyDown={handleKeyDown} */}
+        {/* // /> */}
+        {/* ) : ( */}
+        {/* <p>{title}</p> */}
+        {/* )} */}
       </div>
 
       <div

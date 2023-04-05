@@ -10,8 +10,6 @@ export default function Home() {
     "Task 3",
   ]);
 
-  const [isEditing, setIsEditing] = useState(false);
-
   const addNewTask = (newTask) => {
     settaskListdata([newTask, ...taskListdata]);
   };
@@ -21,27 +19,12 @@ export default function Home() {
     settaskListdata(updateTodo);
   };
 
-  const handleEdit = (editTodo) => {
-    setIsEditing(true);
-    const getEditTodo = taskListdata.map((task) => {
-      if (task === editTodo) {
-        return editTodo
-      } else {
-        return task;
-      }
-
-      //  console.log("todo List Item " + task);
-    });
-
-    settaskListdata(getEditTodo)
-    console.log("todo List Click Item " + editTodo);
-    console.log(getEditTodo);
-    console.log(isEditing);
+  const handleUpdate = (editTodo) => {
+    console.log(editTodo);
+    settaskListdata([editTodo, ...taskListdata]);
   };
 
-  const handleEditEnd = () => {
-    setIsEditing(false);
-  }
+  console.log(taskListdata);
 
   return (
     <div
@@ -54,12 +37,11 @@ export default function Home() {
       }}
     >
       <InputTodo addNewTask={addNewTask} />
+
       <TodoList
         data={taskListdata}
         handleDelete={handleDelete}
-        handleEdit={handleEdit}
-        isEditing={isEditing}
-        handleEditEnd={handleEditEnd}
+        handleUpdate={handleUpdate}
       />
     </div>
   );

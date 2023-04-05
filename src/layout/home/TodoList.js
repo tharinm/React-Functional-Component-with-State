@@ -4,8 +4,8 @@ export default function TodoList({
   data,
   handleDelete,
   handleEdit,
-  isEditing,
-  handleEditEnd,
+  handleUpdate,
+  
 }) {
   return (
     <div>
@@ -24,9 +24,7 @@ export default function TodoList({
               title={val}
               key={key}
               handleDelete={() => handleDelete(val)}
-              isEditing={isEditing}
-              handleEdit={() => handleEdit(val)}
-              handleEditEnd={() => handleEdit(val)}
+              handleUpdate={handleUpdate}
             />
           </div>
         );
