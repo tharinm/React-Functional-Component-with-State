@@ -1,21 +1,17 @@
 import React from "react";
 import { useState } from "react";
 
-export default function InputTodo({addNewTask}) {
- 
-  const [inputValue,setInputValue]=useState("")
+export default function InputTodo({ addNewTask }) {
+  const [inputValue, setInputValue] = useState("");
 
-
-  const handleInput = e => {
+  const handleInput = (e) => {
     setInputValue(e.target.value);
-
-  }
-
+  };
 
   const handleAddNewTask = () => {
     addNewTask(inputValue);
-    setInputValue("")
-  }
+    setInputValue("");
+  };
   //console.log(inputValue)
 
   // const[count,setCount]=useState(0)
@@ -28,14 +24,10 @@ export default function InputTodo({addNewTask}) {
   //  event.target.item.value = "";
   //  };
   // const added = () => {
-    // setCount(count + 1);
+  // setCount(count + 1);
   // }
-  
- 
-
 
   return (
-  
     <div
       style={{
         display: "flex",
@@ -53,10 +45,9 @@ export default function InputTodo({addNewTask}) {
           gap: "10px",
         }}
       >
-        <input type="text " name="item"  onChange={handleInput} />
-        <button onClick={handleAddNewTask} >Add Todo</button>
+        <input type="text " name="item" onChange={handleInput} />
+        <button onClick={handleAddNewTask}>Add Todo</button>
       </div>
-
     </div>
   );
 }

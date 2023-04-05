@@ -1,9 +1,12 @@
-import React from "react";
 import SingleTask from "../../component/Todolist/SingleTask";
 
-
-export default function TodoList({ data, handleDelete }) {
-
+export default function TodoList({
+  data,
+  handleDelete,
+  handleEdit,
+  isEditing,
+  handleEditEnd,
+}) {
   return (
     <div>
       {data.map((val, key) => {
@@ -21,6 +24,9 @@ export default function TodoList({ data, handleDelete }) {
               title={val}
               key={key}
               handleDelete={() => handleDelete(val)}
+              isEditing={isEditing}
+              handleEdit={() => handleEdit(val)}
+              handleEditEnd={() => handleEdit(val)}
             />
           </div>
         );
