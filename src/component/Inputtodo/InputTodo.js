@@ -10,7 +10,7 @@ export default function InputTodo({ addNewTask }) {
 
   const handleAddNewTask = () => {
     addNewTask(inputValue);
-    setInputValue("");
+    setInputValue('');
   };
   //console.log(inputValue)
 
@@ -45,7 +45,7 @@ export default function InputTodo({ addNewTask }) {
           gap: "10px",
         }}
       >
-        <input type="text " name="item" onChange={handleInput} />
+        <input type="text " name="item" onChange={handleInput}  value={inputValue}/>
         <button onClick={handleAddNewTask}>Add Todo</button>
       </div>
     </div>

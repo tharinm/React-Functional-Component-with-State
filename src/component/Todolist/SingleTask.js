@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 
-export default function SingleTask({ title, handleDelete, handleUpdate}) {
+export default function SingleTask({
+  title,
+  handleDelete,
+  handleUpdate,
+
+  itemProp,
+  setUpdate,
+}) {
   const [editMode, setEditMode] = useState(false);
   const [newTask, setNewTask] = useState("");
 
@@ -12,13 +19,13 @@ export default function SingleTask({ title, handleDelete, handleUpdate}) {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       setEditMode(false);
-       handleUpdate(newTask)
-      
+      handleUpdate(newTask);
     }
   };
 
   const handleEdit = () => {
     setEditMode(true);
+    
   };
 
   //console.log(newTask)
@@ -40,8 +47,11 @@ export default function SingleTask({ title, handleDelete, handleUpdate}) {
           <input
             type="text"
             plasehoder={title}
-            onChange={handleInputChange}
+            // onChange={handleInputChange}
             onKeyDown={handleKeyDown}
+            onChange={(e) => {
+              setUpdate(e.target.value,itemProp.id);
+            }}
           />
         )}
         {/* {editMode ? ( */}

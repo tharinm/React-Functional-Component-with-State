@@ -5,8 +5,17 @@ export default function TodoList({
   handleDelete,
   handleEdit,
   handleUpdate,
-  
+  item,
+  setUpdate,
+  testing,
+  setTesting,
 }) {
+  const done = () => { 
+    setTesting(5)
+  };
+
+  console.log(testing);
+
   return (
     <div>
       {data.map((val, key) => {
@@ -22,13 +31,17 @@ export default function TodoList({
           >
             <SingleTask
               title={val}
-              key={key}
+              item={() => item(key)}
               handleDelete={() => handleDelete(val)}
               handleUpdate={handleUpdate}
+              setUpdate={setUpdate}
+              itemProp
             />
           </div>
         );
       })}
+
+      <button onClick={done}>TESTING</button>
     </div>
   );
 }

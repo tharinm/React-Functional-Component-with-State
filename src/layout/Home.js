@@ -4,11 +4,8 @@ import TodoList from "./home/TodoList";
 import { useState } from "react";
 
 export default function Home() {
-  const [taskListdata, settaskListdata] = useState([
-    "Task 1",
-    "Task 2",
-    "Task 3",
-  ]);
+  const [taskListdata, settaskListdata] = useState([]);
+  const [testing, setTesting] = useState([])
 
   const addNewTask = (newTask) => {
     settaskListdata([newTask, ...taskListdata]);
@@ -21,10 +18,30 @@ export default function Home() {
 
   const handleUpdate = (editTodo) => {
     console.log(editTodo);
-    settaskListdata([editTodo, ...taskListdata]);
   };
 
-  console.log(taskListdata);
+  const itemNum = (val) => {
+  
+      
+  
+  };
+
+  const setUpdate = (updatedTodo, id) => {
+    settaskListdata(taskListdata.map((todo) => {
+      if (todo.id === id) {
+        todo = updatedTodo;
+        console.log(todo.id)
+      }
+      return todo;
+    }))
+  }
+
+  //console.log(taskListdata)
+
+  console.log('In Parent '+ testing)
+  
+
+  
 
   return (
     <div
@@ -42,6 +59,9 @@ export default function Home() {
         data={taskListdata}
         handleDelete={handleDelete}
         handleUpdate={handleUpdate}
+        setUpdate={setUpdate}
+        testing={testing}
+        setTesting={setTesting}
       />
     </div>
   );
